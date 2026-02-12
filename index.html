@@ -1,28 +1,101 @@
-<div style="font-family: Arial, sans-serif; text-align: center; padding: 20px; border: 2px solid #ff4d6d; border-radius: 12px; max-width: 400px; margin: auto;">
-  <h2 style="color: #ff4d6d;">💖 Will you be my Valentine? 💖</h2>
-  <p style="font-size: 16px;">Please choose wisely 😌</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <button onclick="yesClicked()" 
-          style="background-color:#ff4d6d;color:white;border:none;padding:10px 20px;border-radius:20px;font-size:16px;cursor:pointer;margin-right:10px;">
-    Yes 💕
-  </button>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      color: white;
+      text-align: center;
+    }
 
-  <button onclick="noClicked()" 
-          style="background-color:#ccc;color:black;border:none;padding:10px 20px;border-radius:20px;font-size:16px;cursor:pointer;">
-    No 🙈
-  </button>
+    .card {
+      background: rgba(255,255,255,0.15);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
 
-  <p id="response" style="margin-top:20px;font-size:18px;font-weight:bold;"></p>
-</div>
+    h1 {
+      margin-bottom: 10px;
+    }
 
-<script>
-  function yesClicked() {
-    document.getElementById("response").innerHTML =
-      "🥰 Yay! Best decision ever. Happy Valentine’s Day! 💘";
-  }
+    p {
+      margin-top: 5px;
+      font-size: 16px;
+    }
 
-  function noClicked() {
-    document.getElementById("response").innerHTML =
-      "😅 Are you sure? I’ll pretend you meant YES 💕";
-  }
-</script>
+    button {
+      font-size: 18px;
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      margin: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #eee;
+      color: #333;
+      position: absolute;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    #message {
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>💖 Will you be my Valentine? 💖</h1>
+    <p>(Double-click YES to confirm 😌)</p>
+
+    <button id="yes" ondblclick="yesConfirmed()">Yes 💕</button>
+    <button id="no" onmouseover="moveNo()">No 🙈</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function yesConfirmed() {
+      document.getElementById("message").innerHTML =
+        "🥰 Best choice ever.<br>See you on Feb 14 💘";
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+  </script>
+
+</body>
+</html>
