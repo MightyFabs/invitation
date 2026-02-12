@@ -1,0 +1,28 @@
+<div style="font-family: Arial, sans-serif; text-align: center; padding: 20px; border: 2px solid #ff4d6d; border-radius: 12px; max-width: 400px; margin: auto;">
+  <h2 style="color: #ff4d6d;">💖 Will you be my Valentine? 💖</h2>
+  <p style="font-size: 16px;">Please choose wisely 😌</p>
+
+  <button onclick="yesClicked()" 
+          style="background-color:#ff4d6d;color:white;border:none;padding:10px 20px;border-radius:20px;font-size:16px;cursor:pointer;margin-right:10px;">
+    Yes 💕
+  </button>
+
+  <button onclick="noClicked()" 
+          style="background-color:#ccc;color:black;border:none;padding:10px 20px;border-radius:20px;font-size:16px;cursor:pointer;">
+    No 🙈
+  </button>
+
+  <p id="response" style="margin-top:20px;font-size:18px;font-weight:bold;"></p>
+</div>
+
+<script>
+  function yesClicked() {
+    document.getElementById("response").innerHTML =
+      "🥰 Yay! Best decision ever. Happy Valentine’s Day! 💘";
+  }
+
+  function noClicked() {
+    document.getElementById("response").innerHTML =
+      "😅 Are you sure? I’ll pretend you meant YES 💕";
+  }
+</script>
