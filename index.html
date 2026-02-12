@@ -1,101 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="font-family: Arial, sans-serif; text-align: center; padding: 20px; border: 2px solid #ff4d6d; border-radius: 12px; max-width: 420px; margin: auto; position: relative;">
+  <h2 style="color: #ff4d6d;">💖 Will you be my Valentine? 💖</h2>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      color: white;
-      text-align: center;
-    }
+  <button onclick="yesClicked()" 
+          style="background-color:#ff4d6d;color:white;border:none;padding:10px 22px;border-radius:20px;font-size:16px;cursor:pointer;margin-right:10px;">
+    Yes 💕
+  </button>
 
-    .card {
-      background: rgba(255,255,255,0.15);
-      padding: 30px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+  <button id="noBtn"
+          onmouseover="moveNo()"
+          onclick="moveNo()"
+          style="background-color:#ccc;color:black;border:none;padding:10px 22px;border-radius:20px;font-size:16px;cursor:pointer;position:absolute;">
+    No 🙈
+  </button>
 
-    h1 {
-      margin-bottom: 10px;
-    }
+  <p id="response" style="margin-top:60px;font-size:18px;font-weight:bold;"></p>
+</div>
 
-    p {
-      margin-top: 5px;
-      font-size: 16px;
-    }
+<script>
+  function yesClicked() {
+    document.getElementById("response").innerHTML =
+      "🥰 Yay! I’m so happy you said YES! 💖<br><br>📩 Please check your email — I sent you something special.";
+    
+    // Disable the No button after Yes
+    document.getElementById("noBtn").style.display = "none";
+  }
 
-    button {
-      font-size: 18px;
-      padding: 12px 24px;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      margin: 15px;
-      transition: transform 0.2s ease;
-    }
+  function moveNo() {
+    const btn = document.getElementById("noBtn");
+    const container = btn.parentElement;
 
-    #yes {
-      background: #ff4d6d;
-      color: white;
-    }
+    const maxX = container.offsetWidth - btn.offsetWidth;
+    const maxY = container.offsetHeight - btn.offsetHeight;
 
-    #no {
-      background: #eee;
-      color: #333;
-      position: absolute;
-    }
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-    button:active {
-      transform: scale(0.95);
-    }
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+  }
 
-    #message {
-      margin-top: 25px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
+  // Initial random position
+  moveNo();
+</script>
 
-  <div class="card">
-    <h1>💖 Will you be my Valentine? 💖</h1>
-    <p>(Double-click YES to confirm 😌)</p>
-
-    <button id="yes" ondblclick="yesConfirmed()">Yes 💕</button>
-    <button id="no" onmouseover="moveNo()">No 🙈</button>
-
-    <div id="message"></div>
-  </div>
-
-  <script>
-    function yesConfirmed() {
-      document.getElementById("message").innerHTML =
-        "🥰 Best choice ever.<br>See you on Feb 14 💘";
-    }
-
-    function moveNo() {
-      const noBtn = document.getElementById("no");
-
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
-  </script>
-
-</body>
-</html>
